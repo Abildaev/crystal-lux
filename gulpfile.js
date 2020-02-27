@@ -20,7 +20,7 @@ const isTest = process.env.NODE_ENV === 'test';
 const isDev = !isProd && !isTest;
 
 function styles() {
-  return src('app/styles/*.scss')
+  return src('app/styles/*.sass')
     .pipe($.plumber())
     .pipe($.if(!isProd, $.sourcemaps.init()))
     .pipe($.sass.sync({
@@ -168,7 +168,7 @@ function startAppServer() {
     '.tmp/fonts/**/*'
   ]).on('change', server.reload);
 
-  watch('app/styles/**/*.scss', styles);
+  watch('app/styles/*.sass', styles);
   watch('app/scripts/**/*.js', scripts);
   watch('modernizr.json', modernizr);
   watch('app/fonts/**/*', fonts);
